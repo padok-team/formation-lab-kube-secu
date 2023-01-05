@@ -14,7 +14,7 @@ spec:
   source:
     path: dev/component-config/argocd
     repoURL: git@github.com:padok-team/kubesecu-lab-cours.git
-    targetRevision: HEAD
+    targetRevision: main
   syncPolicy:
     automated:
       selfHeal: true
