@@ -16,7 +16,7 @@ spec:
   source:
     # ⚠️ Change this 👇
     repoURL: git@github.com:padok-team/kubesecu-lab-cours.git
-    path: component-config/external-dns/
+    path: dev/component-config/external-dns/
   syncPolicy:
     automated:
       prune: true

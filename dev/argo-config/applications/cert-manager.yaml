@@ -15,7 +15,7 @@ spec:
   source:
     # ⚠️ Change this 👇
     repoURL: git@github.com:padok-team/kubesecu-lab-cours.git
-    path: component-config/cert-manager/
+    path: dev/component-config/cert-manager/
   syncPolicy:
     automated:
       selfHeal: true

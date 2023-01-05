@@ -17,7 +17,7 @@ spec:
   source:
     # ⚠️ Change this 👇
     repoURL: git@github.com:padok-team/kubesecu-lab-cours.git
-    path: component-config/ingress-nginx/
+    path: dev/component-config/ingress-nginx/
   syncPolicy:
     automated:
       prune: true
