@@ -1,0 +1,35 @@
+# Default values: https://github.com/argoproj/argo-helm/blob/master/charts/argo-cd/values.yaml
+
+argo-cd:
+  server:
+    ingress:
+      annotations:
+        # ⚠️ Change this 👇, specify the callback authentication URL for OAuth2.
+        nginx.ingress.kubernetes.io/auth-url: 'https://$host/oauth2/auth'
+        # ⚠️ Change this 👇, specify the callback signin URL for OAuth2.
+        nginx.ingress.kubernetes.io/auth-signin: 'https://$host/oauth2/start?rd=$escaped_request_uri'
+        # Integrate this header to the response to pass the email of the authenticated user to the dex server.
+        nginx.ingress.kubernetes.io/auth-response-headers: X-Auth-Request-User
+        # Remap the X-Auth-Request-User header to X-Remote-User for the dex server.
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          auth_request_set $auth_header $upstream_http_x_auth_request_user;
+          proxy_set_header 'x-remote-user' $auth_header;
+
+    # ArgoCD configuration
+    # Reference: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
+    #
+    # We need a plugin to use a helm chart stored in one repository with values
+    # stored in a different repository.
+    config:
+      url: 'https://argocd.your.domain.fr' # <== Change this.
+
+      # Configure the dex component to enable the OAuth2 Proxy connector.
+      dex.config: |
+        connectors:
+          - type: authproxy
+            id: oauth2-proxy
+            name: OAuth2 Proxy
+
+    # By default, grant the admin role to any user who can authenticate with OAuth2.
+    rbacConfig:
+      policy.default: 'role:admin'
