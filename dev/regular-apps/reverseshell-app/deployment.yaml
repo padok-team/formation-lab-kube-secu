@@ -23,7 +23,6 @@ kind: Service
 metadata:
   name: imagetragick
 spec:
-  type: LoadBalancer
   selector:
     app: imagetragick
   ports:

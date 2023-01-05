@@ -12,7 +12,7 @@ spec:
     name: in-cluster
   project: default
   source:
-    path: component-config/argocd
+    path: dev/component-config/argocd
     repoURL: git@github.com:padok-team/kubesecu-lab-cours.git
     targetRevision: HEAD
   syncPolicy:
