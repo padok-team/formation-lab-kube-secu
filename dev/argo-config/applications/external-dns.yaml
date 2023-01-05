@@ -1,0 +1,25 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    # ⚠️ Change this 👇 if you want another destination namespace.
+    namespace: external-dns
+    name: in-cluster
+  source:
+    # ⚠️ Change this 👇
+    repoURL: <SSH_REPO_URL>
+    path: component-config/external-dns/
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

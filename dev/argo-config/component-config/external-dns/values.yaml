@@ -1,0 +1,9 @@
+# Default values are available here: https://github.com/bitnami/charts/blob/master/bitnami/external-dns/values.yaml
+
+external-dns:
+  provider: aws
+
+  serviceAccount:
+    annotations:
+      # ⚠️ Change this 👇
+      eks.amazonaws.com/role-arn: arn:aws:iam::969990446292:role/external-dns
