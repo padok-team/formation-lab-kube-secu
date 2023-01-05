@@ -1,0 +1,26 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-controller-nginx
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    # ⚠️ Change this 👇 if you want another destination namespace.
+    namespace: ingress-nginx
+    name: in-cluster
+  source:
+    # ⚠️ Change this 👇
+    repoURL: git@github.com:padok-team/kubesecu-lab-cours.git
+    path: component-config/ingress-nginx/
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
