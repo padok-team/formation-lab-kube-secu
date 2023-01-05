@@ -15,7 +15,7 @@ spec:
     name: in-cluster
   source:
     # ⚠️ Change this 👇
-    repoURL: <SSH_REPO_URL>
+    repoURL: git@github.com:padok-team/kubesecu-lab-cours.git
     path: component-config/external-dns/
   syncPolicy:
     automated:
