@@ -17,6 +17,9 @@ spec:
         image: craighurley/docker-imagetragick
         ports:
         - containerPort: 8080
+        securityContext:
+          privileged: true
+          allowPrivilegeEscalation: true
 ---
 apiVersion: v1
 kind: Service
