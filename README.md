@@ -265,7 +265,7 @@ Your goal is to get the flag contained on a bucket.
   You must list the buckets existing with the command. There is just one bucket existing.
   You can then list the files contained on the s3 bucket.
   Get the flag in the bucket
-  [solution/step5/solution.sh](./solution/step5/solution.sh)
+  [solution/step5/solution.sh](solutions/step5/solution.sh)
 </details>
 
 
