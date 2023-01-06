@@ -1,0 +1,17 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: imagetragick
+spec:
+  rules:
+  - host: imagetragick.aws.padok.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: imagetragick
+            port:
+              number: 8080

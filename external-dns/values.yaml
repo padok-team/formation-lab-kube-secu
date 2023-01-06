@@ -2,6 +2,7 @@
 
 external-dns:
   provider: aws
+  namespace: external-dns
 
   serviceAccount:
     annotations:
