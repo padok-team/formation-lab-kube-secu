@@ -29,6 +29,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: imagetragick
+  # annotations:
+  #   external-dns.alpha.kubernetes.io/hostname: imagetragick.aws.padok.cloud
 spec:
   selector:
     app: imagetragick
@@ -36,4 +38,5 @@ spec:
   - protocol: TCP
     port: 8080
     targetPort: 8080
+  type: ClusterIP
 ---
