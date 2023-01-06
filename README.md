@@ -269,7 +269,7 @@ Your goal is to get the flag contained on a bucket.
 </details>
 
 
-![final](./secure_architecture.png)
+![final](./attack_architecture.png)
 
 # LICENSE
 
