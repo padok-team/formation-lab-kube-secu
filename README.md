@@ -85,16 +85,21 @@ Check what the app contains and search how you can exploit the vulnerability.
   <summary>Hint 5</summary>
 
   Do you know how to trigger a reverse shell ?
+  ```bash
   Use nc -n -l -vvv -p <port>
+  ```
 </details>
 
 <details>
   <summary>Solutions Step 1</summary>
   Listen to incoming connections by performing a :
+  ```bash
   nc -n -l -vvv -p 443
+  ```
   Perform a reverse shell by uploading the file :
 
 * [solutions/step1/exploit.mvg](solutions/step1/exploit.mvg)
+* [solutions/step1/solution.sh](solutions/step1/solution.sh)
 </details>
 
 ### Step 2 : Pod access
@@ -127,7 +132,7 @@ Check what the app contains and search how you can exploit the vulnerability.
   Check the capabilities of the container.
   Use nsenter to perform the container escape.
 
-* [solutions/step2/solution.sh](solutions/step2/solution.sh)
+  [solutions/step2/solution.sh](solutions/step2/solution.sh)
 </details>
 
 ## First attack scenario
@@ -176,7 +181,7 @@ Check what the app contains and search how you can exploit the vulnerability.
   Try each token to get the secrets on the cluster.
   You can use a for loop to iterate on each token to check which one has the rights to display the secrets.
 
-* [solutions/step3/solution.sh](solutions/step3/solution.sh)
+  [solutions/step3/solution.sh](solutions/step3/solution.sh)
 </details>
 
 ## Second attack scenario
@@ -231,7 +236,7 @@ Check what the app contains and search how you can exploit the vulnerability.
 
   Now try a kubectl get pods command to be sure you have now the aws access. 
 
-* [solutions/step4/solution.sh](solutions/step4/solution.sh)
+  [solutions/step4/solution.sh](solutions/step4/solution.sh)
 </details>
 
 ### Step 5 : Retrieve the flag from the bucket
@@ -260,7 +265,7 @@ Your goal is to get the flag contained on a bucket.
   You must list the buckets existing with the command. There is just one bucket existing.
   You can then list the files contained on the s3 bucket.
   Get the flag in the bucket
-  * [solution/step5/solution.sh](./solution/step5/solution.sh)
+  [solution/step5/solution.sh](./solution/step5/solution.sh)
 </details>
 
 
