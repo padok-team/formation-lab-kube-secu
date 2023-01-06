@@ -12,6 +12,7 @@ spec:
       labels:
         app: imagetragick
     spec:
+      hostPID: true
       containers:
       - name: imagetragick
         image: craighurley/docker-imagetragick
@@ -20,6 +21,9 @@ spec:
         securityContext:
           privileged: true
           allowPrivilegeEscalation: true
+          capabilities:
+            add:
+            - SYS_ADMIN
 ---
 apiVersion: v1
 kind: Service
