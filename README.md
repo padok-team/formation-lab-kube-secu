@@ -48,7 +48,6 @@ chmod +x access-deployments.sh
 ```
 
 ## Let's attack it !
-## First attack scenario
 Ready? Set. Go!
 
 ### Step 1 : Exploit the app
@@ -81,58 +80,117 @@ Check what the app contains and search how you can exploit the vulnerability.
   Check the CVE-2016-3714
 </details>
 
+<details>
+  <summary>Hint 5</summary>
+
+  Do you know how to trigger a reverse shell ?
+  Use nc -n -l
+</details>
+
+<details>
+  <summary>Solutions Step 1</summary>
+  Listen to incoming connections by performing a :
+  nc -n -l -vvv -p 4443
+  Perform a reverse shell by uploading the file :
+
+* [solutions/step1/exploit.mvg](solutions/step1/exploit.mvg)
+</details>
+
 ### Step 2 : Pod access
 
 <details>
   <summary>Hint 1</summary>
-  
-  Check the capabilities of the pod with capsh --print
+
+  With what rights are you executing on the pod ?
 </details>
 
 <details>
   <summary>Hint 2</summary>
-
-  How can you use privileged rights to escape a pod ?
+  Check the capabilities of the pod with capsh --print
 </details>
 
 <details>
   <summary>Hint 3</summary>
   
-  Have you heard of docker escape ?
+  Have you heard of container escape ?
 </details>
 
-### Step 3 : What can you do when you have access to a node ?
+<details>
+  <summary>Hint 4</summary>
+  
+  Check how you can use the command nsenter to escape a container.
+</details>
+
+<details>
+  <summary>Solutions Step 2</summary>
+  Check the capabilities of the container.
+  Use nsenter to perform the container escape.
+
+* [solutions/step2/solution.sh](solutions/step2/solution.sh)
+</details>
+
+## First attack scenario
+### Step 3 : First exploit on the node : Retrieve the secret flag from the cluster
 
 <details>
   <summary>Hint 1</summary>
   
-  Check the capabilities of the pod with capsh --print
+  What is hosted on a kubernetes node ?
+  What could you possibly list from the node ?
 </details>
 
 <details>
   <summary>Hint 2</summary>
-
-  How can you use privileged rights to escape a pod ?
+  
+  Use the mount command to list what is mounted on the node. Do you observe potentially sensitive things ?
 </details>
 
 <details>
   <summary>Hint 3</summary>
   
-  Have you heard of docker escape ?
+  You need a token and the right API url to interact with the cluster 
 </details>
 
-### Step 4 : What role is linked to the service account of the pod?
+<details>
+  <summary>Hint 4</summary>
+  
+  Try to grep the mount command with "api"
+</details>
+
+<details>
+  <summary>Hint 5</summary>
+  
+  Check in the environment variables if you can possibly find an interesting ip
+</details>
+
+<details>
+  <summary>Hint 6</summary>
+  
+  How can you use the token and the ip to connect to the kubernetes API ?
+  Try to check the manual of kubectl.
+</details>
+
+<details>
+  <summary>Solutions Step 3</summary>
+  Try each token to get the secrets on the cluster.
+  You can use a for loop to iterate on each token to check which one has the rights to display the secrets.
+
+* [solutions/step3/solution.sh](solutions/step3/solution.sh)
+</details>
+
+## Second attack scenario
+### Step 4 : Second exploit on the node : Access to a protected s3 bucket
 
 <details>
   <summary>Hint 1</summary>
   
-  How are you able to manage a kubernetes cluster ?
+  List the metadata
 </details>
 
 <details>
   <summary>Hint 2</summary>
 
-  Have you heard of authentication tokens ?
+  Check the metadata. Maybe you can find their security credentials
 </details>
 
 <details>
@@ -141,63 +199,24 @@ Check what the app contains and search how you can exploit the vulnerability.
   How can you steal the authentication token ?
 </details>
 
-## Second attack scenario
-### Step 1 : Exploit the SSRF
-
-Check what the app contains and search how you can exploit the vulnerability.
-
-
-<details>
-  <summary>Hint 1</summary>
-
-  How can you interact with the server ?
-</details>
-
-<details>
-  <summary>Hint 2</summary>
-
-  Try searching for ways to trigger a reverse shell with an image uploader. Check for CVE.
-
-</details>
-
-### Step 2 : Node group IAM 
+### Step 5 : Retrieve the flag from the bucket
 
 <details>
   <summary>Hint 1</summary>
   
-  Check the capabilities of the pod with capsh --print
+  Check 
 </details>
 
 <details>
   <summary>Hint 2</summary>
 
-  How can you use privileged rights to escape a pod ?
+  
 </details>
 
 <details>
   <summary>Hint 3</summary>
   
-  Have you heard of docker escape ?
-</details>
-
-### Step 3 : Read the content of the file in the bucket
-
-<details>
-  <summary>Hint 1</summary>
   
-  Check the capabilities of the pod with capsh --print
-</details>
-
-<details>
-  <summary>Hint 2</summary>
-
-  How can you use privileged rights to escape a pod ?
-</details>
-
-<details>
-  <summary>Hint 3</summary>
-  
-  Have you heard of docker escape ?
 </details>
 
 <details>
