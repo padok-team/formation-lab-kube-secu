@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: imagetragick.aws.padok.cloud
+  - host: imagetragick.cs.padok.school
     http:
       paths:
       - path: /

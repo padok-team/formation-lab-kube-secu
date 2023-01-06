@@ -11,9 +11,3 @@ helm install nginx-ingress nginx-stable/nginx-ingress
 ```bash
 kubectl apply -f .
 ```
-
-Todo
-
-delet external-dns.back
-delete ingress-nginx
-delete rbac-misconfig
