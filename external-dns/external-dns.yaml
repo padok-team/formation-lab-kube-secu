@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/instance: external-dns
     app.kubernetes.io/version: "0.11.0"
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::969990446292:role/external-dns
+    eks.amazonaws.com/role-arn: arn:aws:iam::450568479740:role/external-dns
 ---
 # Source: external-dns/charts/external-dns/templates/clusterrole.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -113,7 +113,7 @@ spec:
           args:
             - --log-level=debug
             - --log-format=text
-            - --domain-filter=cs.padok.school
+            - --domain-filter=dojo.padok.school
             - --interval=1m
             - --source=ingress
             - --source=service
