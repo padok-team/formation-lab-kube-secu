@@ -29,27 +29,13 @@ To work efficiently, you will work on a distant VM on which all the following to
 
 To connect to the VM:
 
-- Install VSCode
-- Add the following [Remote SSH extension](https://code.visualstudio.com/docs/remote/ssh) to VSCode
-
-- Create a github account
-- Create a SSH key on your Github account: [Add a ssh key documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-- Share your handle Github with Padok's team member
-
-- Launch a "Remote SSH Session" with VSCode extension via the command `ssh eleve@<Handle>.aws.padok.cloud`
-
-### Bootstrap the environment
-
-To create the insecure infrastructure, follow these steps:
-
-```bash
-chmod +x access-deployments.sh
-./access-deployments.sh
-
-```
+- Connect on https://<handle>.training.dojo.padok.school with the password <handle12345>
 
 ## Let's attack it !
 Ready? Set. Go!
+
+To start the exercise
+- Connect to the vulnerable website : http://imagetragick.dojo.padok.school/
 
 ### Step 1 : Exploit the app
 
@@ -273,6 +259,6 @@ Your goal is to get the flag contained on a bucket.
 
 # LICENSE
 
-© 2023 [Padok](https://www.padok.fr/).
+© 2025 [Theodo Cloud](https://cloud.theodo.com/).
 
 Licensed under the [Apache License](https://www.apache.org/licenses/LICENSE-2.0), Version 2.0 ([LICENSE](./LICENSE))
